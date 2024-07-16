@@ -65,10 +65,10 @@ p {
   margin-bottom: 1rem;
 }
 
-/* @media screen and (max-width:1000px){ */
-  /* .slot{ */
-    /* font-size:50px; */
-    /* display: inline-block; */
-    /* margin: 10px; */
-  /* }      */
-/* } */
+@media screen and (max-width:700px){
+  .slot{
+    font-size:70px;
+    display: inline-block;
+    margin: 10px;
+  }     
+}
