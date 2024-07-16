@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="dark"></html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+<link href="cover.css" rel="stylesheet">
+</head>
+ 
+<body class="d-flex h-100 text-center text-bg-dark">
+    
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">No Brainer</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+            <!-- <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
+            <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a> -->
+            </nav>
+        </div>
+        </header>
+
+        <main class="px-3">
+        <div class="game">
+        <div class="slot" id="slot1">🍒</div>
+        <div class="slot" id="slot2">🍒</div>
+        <div class="slot" id="slot3">🍒</div>
+        </div>
+        <div>
+        <p class="lead">
+            <button class="btn btn-lg btn-light fw-bold border-white bg-white" onclick="start()">Spin</button>
+            
+        </p>
+        </div>
+
+        <div>
+            <p id="demo5"></p>
+            <br>
+            <p id="demo6"></p>
+
+            <p id="demo"></p>
+            
+        </div>
+        
+        </main>  
+        
+    
+        <footer class="mt-auto text-white-50">
+        <p>Made with 💖 for <a href="https://en.wikipedia.org/wiki/Special:Random" class="text-white">Decision Fatigue</a>, by <a href="https://twitter.com/" class="text-white">TwoBit</a>.</p>
+        </footer>
+    </div>
+    
+     
+ 
+ 
+
+
+<script>
+const symbols = ['🍒', '🍋', '🍇', '🍊', '🍉','🍒']; // Add more symbols if needed
+    
+  
+function getRandomSymbol() {
+    return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+// // Defining our first promise
+// let firstPromise = () => {
+//     return new Promise((resolve, reject) => {
+//         result_1 = getRandomSymbol();
+//         resolve(result_1);
+//     });
+// };
+
+// Defining our second promise
+let firstPromise = () => {
+    return new Promise((resolve, reject) => {
+        const interval =setInterval(()=>{
+            result_1 =getRandomSymbol();
+            document.getElementById("slot1").innerHTML=result_1;
+
+        },100);
+        setTimeout(()=>{
+            resolve(result_1);
+            clearInterval(interval);
+        },1000);
+        
+        
+    });
+};
+ 
+// Defining our second promise
+let secondPromise = () => {
+    return new Promise((resolve, reject) => {
+        const interval =setInterval(()=>{
+            result_2 =getRandomSymbol();
+            document.getElementById("slot2").innerHTML=result_2;
+
+        },100);
+        setTimeout(()=>{
+            resolve(result_2);
+            clearInterval(interval);
+        },1000);
+        
+        
+    });
+};
+
+// Defining our second promise
+let thirdPromise = () => {
+    return new Promise((resolve, reject) => {
+        const interval =setInterval(()=>{
+            result_3 =getRandomSymbol();
+            document.getElementById("slot3").innerHTML=result_3;
+
+        },100);
+        setTimeout(()=>{
+            resolve(result_3);
+            clearInterval(interval);
+        },1000);
+        
+        
+    });
+};
+  
+ 
+// Async function to perform execution of all promise
+let start = async () => {
+    document.getElementById("demo5").innerHTML = " ";
+    let promise = await Promise.all([
+        firstPromise(),
+        secondPromise(),
+        thirdPromise()
+    ]);
+    // console.log(promise);
+    // document.getElementById('demo').innerHTML = promise;
+
+    if (promise[0] === promise[1] && promise[1]=== promise[2]) {      
+        document.getElementById("demo5").innerHTML="Bingo! 🥳";
+      } else {
+        document.getElementById("demo5").innerHTML="Try again!";
+      }
+};
+ 
+// // Function call
+// promiseExecution();
+
+ 
+</script>
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</body>
+</html>
